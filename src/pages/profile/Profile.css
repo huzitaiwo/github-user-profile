@@ -1,0 +1,19 @@
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+.profile .card {
+  background: #fff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+.profile .card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
