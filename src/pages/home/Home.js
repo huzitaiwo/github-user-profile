@@ -5,10 +5,7 @@ import './Home.css'
 
 export default function Home() {
   const { data, isPending, error } = useFetch('http://localhost:5000/posts')
-  // console.log(data)
-
-  // const { id, title, body } = data;
-
+  
   return (
     <div className="post">
       {data && data.map(post => (
