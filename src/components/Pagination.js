@@ -7,7 +7,7 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
   const [currentPage, setCurrentPage] = useState(1);
 
   function goToNextPage() {
-     // not yet implemented
+    setCurrentPage((page) => page + 1)
   }
 
   function goToPreviousPage() {
