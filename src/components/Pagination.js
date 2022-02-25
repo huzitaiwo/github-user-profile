@@ -15,7 +15,8 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
   }
 
   function changePage(event) {
-     // not yet implemented
+    const pageNumber = Number(event.target.textContent);
+    setCurrentPage(pageNumber);
   }
 
   const getPaginatedData = () => {
