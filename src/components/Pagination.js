@@ -26,12 +26,13 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
   }
 
   const getPaginationGroup = () => {
-     // not yet implemented
+    let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit
+    console.log(start)
+    return new Array(pageLimit).fill().map((_, idx) => start + idx + 1)
   }
 
   return (
     <div>
-      
     </div>
   )
 }

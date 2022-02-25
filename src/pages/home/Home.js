@@ -18,7 +18,6 @@ export default function Home() {
           <p>{post.body}</p>
         </div>
       ))}
-      
     </div>
   )
 }
