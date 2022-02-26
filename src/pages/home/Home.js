@@ -37,13 +37,13 @@ export default function App() {
           >
           {/* <img src={profile.avatar_url} alt="" /> */}
           <p>{profile.login}</p>
-          {hover && (
+          {/* {hover && (
             <>
               <p>{profile.score}</p>
               <p>{profile.type}</p>
               <a href={profile.html_url}>View user profile</a>
             </>
-          )}
+          )} */}
         </div>
       ))}
     </div>
