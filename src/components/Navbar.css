@@ -12,3 +12,7 @@
   justify-content: space-between;
   align-items: center;
 }
+.navbar .logo img {
+  width: 40px;
+  filter: invert(100%);
+}
