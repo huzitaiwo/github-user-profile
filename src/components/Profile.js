@@ -1,7 +1,10 @@
+import { useState } from 'react'
+
 // styles
 import './Profile.css'
 
 export default function Profile({ data }) {
+  const [hover, setHover] = useState(false)
 
   if(data.length === 0) {
     console.log('no user')
@@ -11,6 +14,7 @@ export default function Profile({ data }) {
   return (
     <div className='container profile'>
       {data.items.map(profile => (
+
         <div key={profile.id} className='card'>
           <img src={profile.avatar_url} alt="" />
           <p><span className='label'>username:</span> {profile.login}</p>
