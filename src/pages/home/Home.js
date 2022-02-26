@@ -22,7 +22,6 @@ import './Home.css'
 
 
 export default function App() {
-  const [hover, setHover] = useState(false)
   const {data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=1')
   
   return (

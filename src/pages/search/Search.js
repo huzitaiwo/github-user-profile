@@ -4,6 +4,9 @@ import { useFetch } from '../../hooks/useFetch'
 // styles
 import './Search.css'
 
+// components
+import Profile from '../../components/Profile'
+
 export default function Search() {
   const queryString = useLocation().search
   const queryParams = new URLSearchParams(queryString)
@@ -15,9 +18,9 @@ export default function Search() {
 
   return (
     <div>
-      <div className="page-title">Recipes including "{query}"</div>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
+      {data && <Profile data={data} />}
     </div>
   )
 }
