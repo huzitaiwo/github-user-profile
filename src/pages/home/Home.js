@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch'
 
 import Pagination from '../../components/Pagination';
+import Profile from '../../components/Profile';
 import Post from '../../components/Post'
 
 // styles
@@ -25,27 +26,10 @@ export default function App() {
   const {data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=1')
   
   return (
-    <div className='profile container'>
+    <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {data && data.items.map(profile => (
-        <div 
-          key={profile.id} 
-          className='card' 
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          >
-          {/* <img src={profile.avatar_url} alt="" /> */}
-          <p>{profile.login}</p>
-          {/* {hover && (
-            <>
-              <p>{profile.score}</p>
-              <p>{profile.type}</p>
-              <a href={profile.html_url}>View user profile</a>
-            </>
-          )} */}
-        </div>
-      ))}
+      {data && <Profile />}
     </div>
   );
 }
