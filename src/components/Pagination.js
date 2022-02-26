@@ -32,9 +32,9 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
     return new Array(pageLimit).fill().map((_, idx) => start + idx + 1)
   }
 
-  // useEffect(() => {
-  //   window.scrollTo({ top: '0px' });
-  // }, [currentPage]);
+  useEffect(() => {
+    window.scrollTo({ top: '0px' });
+  }, [currentPage]);
 
   return (
     <div>

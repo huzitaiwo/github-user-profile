@@ -1,29 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useFetch } from '../../hooks/useFetch'
 
 import Pagination from '../../components/Pagination';
 import Post from '../../components/Post'
 
-const url = 'http://localhost:5000/posts';
 
 export default function App() {
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (response.ok) return response.json();
-        throw new Error('something went wrong while requesting posts');
-      })
-      .then((posts) => setPosts(posts))
-      .catch((error) => setError(error.message));
-  }, []);
+  const {data: posts, isPending, error } = useFetch('http://localhost:5000/posts')
 
   if (error) return <h1>{error}</h1>;
 
   return (
     <div>
-      {posts.length > 0 ? (
+      {error && <h2>{error}</h2>}
+      {isPending && <h2>Loading...</h2>}
+      {!posts && <h2>No post to display</h2>}
+      {posts && (
         <>
           <Pagination
             data={posts}
@@ -33,9 +25,7 @@ export default function App() {
             dataLimit={10}
           />
         </>
-      ) : (
-       <h1>No Posts to display</h1>
-      )}
+      ) }
     </div>
   );
 }
