@@ -7,16 +7,15 @@ import './Searchbar.css'
 
 export default function Searchbar() {
   const [term, setTerm] = useState('')
-//   const history = useHistory()
+  const history = useHistory()
 
-//   const handleSubmit = e => {
-//     e.preventDefault()
-//     history.push(`/search?q=${term}`)
-//   }
+  const handleSearch = e => {
+    e.preventDefault()
+    history.push(`/search?q=${term}`)
+  }
  
   return (
-    <form className='searchbar'>
-    {/* <label htmlFor="search">Search:</label> */}
+    <form className='searchbar' onSubmit={handleSearch}>
     <input 
         type="text" 
         id='search' 
