@@ -1,21 +1,10 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch'
 
 import Pagination from '../../components/Pagination';
 import Post from '../../components/Post'
 
-
-export default function App() {
-  const {data: posts, isPending, error } = useFetch('http://localhost:5000/posts')
-
-  if (error) return <h1>{error}</h1>;
-
-  return (
-    <div>
-      {error && <h2>{error}</h2>}
-      {isPending && <h2>Loading...</h2>}
-      {!posts && <h2>No post to display</h2>}
-      {posts && (
+{/* {posts && (
         <>
           <Pagination
             data={posts}
@@ -25,7 +14,25 @@ export default function App() {
             dataLimit={10}
           />
         </>
-      ) }
+      ) } */}
+
+
+export default function App() {
+  const {data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=20')
+
+  if (error) return <h1>{error}</h1>;
+
+  return (
+    <div>
+      {error && <h2>{error}</h2>}
+      {isPending && <h2>Loading...</h2>}
+      {data && data.items.map(profile => {
+        <div key={profile.id} className='card'>
+          <img src={profile.avatar_url} alt="" />
+          <p>{profile.login}</p>
+          <p>{profile.score}</p>
+        </div>
+      })}
     </div>
   );
 }
