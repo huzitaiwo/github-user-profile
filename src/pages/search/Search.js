@@ -11,8 +11,7 @@ export default function Search() {
   const queryString = useLocation().search
   const queryParams = new URLSearchParams(queryString)
   const query = queryParams.get('q')
-
-  // const url = 'http://localhost:4000/recipes?q=' + query;
+  
   const url = `https://api.github.com/search/users?q=${query}&page=1`;
   const { error, isPending, data } = useFetch(url)
 

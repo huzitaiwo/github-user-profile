@@ -12,8 +12,8 @@ import Search from "./pages/search/Search"
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Switch>
           <Route exact path='/'>
             <Home />
