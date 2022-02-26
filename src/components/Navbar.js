@@ -3,7 +3,7 @@ import './Navbar.css'
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className='navbar'>
       <div className="container">
         <div className="logo">Github user profiles</div>
         <form>

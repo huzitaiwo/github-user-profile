@@ -1,6 +1,14 @@
-nav {
-  min-height: 10vh;
+.navbar {
+  height: 10vh;
+  background: #24292f;
+  color: #fff;
+}
+.navbar .container {
+  height: 100%;
   max-width: 1200px;
   padding: 0 20px;
-  background: #24292f;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
