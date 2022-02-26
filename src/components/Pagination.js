@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import './Pagination.css'
 
 
-export default function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
+export default function Pagination({ data, RenderComponent, pageLimit, dataLimit }) {
   const [pages] = useState(Math.round(data.length / dataLimit))
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -38,7 +38,6 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
 
   return (
     <div>
-    <h1>{title}</h1>
 
     {/* show the posts, 10 posts at a time */}
     <div className="dataContainer">
