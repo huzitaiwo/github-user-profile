@@ -1,9 +1,10 @@
-import './Pagination.css'
-
 import { useState } from 'react'
 
+// styles
+import './Pagination.css'
+
+
 export default function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
-    console.log(data)
   const [pages] = useState(Math.round(data.length / dataLimit))
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -28,9 +29,12 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
 
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit
-    console.log(start)
     return new Array(pageLimit).fill().map((_, idx) => start + idx + 1)
   }
+
+  useEffect(() => {
+    window.scrollTo({ behavior: 'smooth', top: '0px' });
+  }, [currentPage]);
 
   return (
     <div>
