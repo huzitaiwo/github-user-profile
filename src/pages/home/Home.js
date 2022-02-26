@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch'
 
-import Pagination from '../../components/Pagination';
+// components
 import Profile from '../../components/Profile';
-import Post from '../../components/Post'
 
 // styles
 import './Home.css'
@@ -28,7 +27,7 @@ export default function App() {
     <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {data && <Profile />}
+      {data && <Profile data={data} />}
     </div>
   );
 }

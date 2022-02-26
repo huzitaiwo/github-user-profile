@@ -2,6 +2,7 @@
 import './Profile.css'
 
 export default function Profile({ data }) {
+  console.log(data)
   return (
     <div className='profile'>
       {data.items.map(profile => (
