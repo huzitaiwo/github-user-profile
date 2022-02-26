@@ -4,6 +4,9 @@ import { useFetch } from '../../hooks/useFetch'
 import Pagination from '../../components/Pagination';
 import Post from '../../components/Post'
 
+// styles
+import './Home.css'
+
 {/* {posts && (
         <>
           <Pagination
@@ -18,21 +21,19 @@ import Post from '../../components/Post'
 
 
 export default function App() {
-  const {data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=20')
-
-  if (error) return <h1>{error}</h1>;
-
+  const {data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=1')
+  
   return (
-    <div>
+    <div className='profile'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {data && data.items.map(profile => {
+      {data && data.items.map(profile => (
         <div key={profile.id} className='card'>
-          <img src={profile.avatar_url} alt="" />
+          {/* <img src={profile.avatar_url} alt="" /> */}
           <p>{profile.login}</p>
           <p>{profile.score}</p>
         </div>
-      })}
+      ))}
     </div>
   );
 }
