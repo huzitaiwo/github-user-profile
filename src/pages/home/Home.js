@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect} from 'react';
 // import { useFetch } from '../../hooks/useFetch'
 
 // components
@@ -32,13 +32,13 @@ export default function App() {
         }
 
         const data = await res.json()
-        console.log(data)
 
         setError(false)
         setIsPending(false)
-        setUsers([...users, ...data.items])
+        // setUsers([...users, ...data.items])
+        setUsers(data.items)
         setTotalPages(Math.round(data.total_count / 30))
-        console.log(totalPages, users)
+        
       }
       catch(err) {
         setIsPending(false)
@@ -47,15 +47,16 @@ export default function App() {
       }
     }
     getUser()
-  }, [url, page])
+  }, [page, url])
 
   
   return (
     <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {console.log(users)}
+      {console.log(url)}
       {users && <Profile data={users} />}
+      {totalPages !== page && <button className="btn-load-more" onClick={() => setPage(page + 1)}>{isPending ? 'loading...' : 'Load More'}</button>}
     </div>
   );
 }
