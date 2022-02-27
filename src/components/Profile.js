@@ -5,24 +5,20 @@ import './Profile.css'
 
 export default function Profile({ data }) {
   const [hover, setHover] = useState(false)
-  const cardRef = useRef(null)
-
-  const handleMouseEnter = (e) => {
-    console.log(cardRef.current)
-    if(cardRef.current == e.target) {
-      setHover(true)
-    }
-  }
 
   if(data.length === 0) {
-    console.log('no user')
     return <div className='error'>No user profile...</div> 
   }
 
   return (
     <div className='container profile'>
       {data.items.map(profile => (
-        <div key={profile.id} className='card' onMouseEnter={handleMouseEnter} ref={cardRef}>
+        <div 
+          key={profile.id} 
+          className='card' 
+          onMouseEnter={() => setHover(true)} 
+          onMouseLeave={() => setHover(false)}
+        >
           {/* <img src={profile.avatar_url} alt="" /> */}
           <p><span className='label'>username:</span> {profile.login}</p>
           {hover && (
