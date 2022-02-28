@@ -53,7 +53,7 @@ export default function App() {
     <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {users && <Profile data={users} />}
+      {users && <Profile data={users} totalPages={totalPages} />}
     </div>
   );
 }
