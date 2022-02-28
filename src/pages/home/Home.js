@@ -54,7 +54,6 @@ export default function App() {
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
       {users && <Profile data={users} />}
-      {totalPages !== page && <button className="btn-load-more" onClick={() => setPage(page + 1)}>{isPending ? 'loading...' : 'Load More'}</button>}
     </div>
   );
 }

@@ -28,6 +28,7 @@ export default function Profile({ data }) {
             <a className='link' href={profile.html_url}>View profile</a>
           </>
           )}
+          {totalPages !== page && <button className="btn-load-more" onClick={() => setPage(page + 1)}>{isPending ? 'loading...' : 'Load More'}</button>}
         </div>
       ))}
     </div>
