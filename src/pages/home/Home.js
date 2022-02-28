@@ -36,7 +36,7 @@ export default function App() {
 
         setError(false)
         setIsPending(false)
-        // setUsers([users, data.items])
+        // setUsers([users, ...data.items])
         setUsers(data.items)
         setTotalPages(Math.round(data.total_count / 30))
         

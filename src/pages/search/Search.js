@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
+// import { useFetch } from '../../hooks/useFetch'
 
 // styles
 import './Search.css'
@@ -11,15 +12,55 @@ export default function Search() {
   const queryString = useLocation().search
   const queryParams = new URLSearchParams(queryString)
   const query = queryParams.get('q')
+
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+
+  const [users, setUsers] = useState([])
+  const [isPending, setIsPending] = useState(false)
+  const [error, setError] = useState(null)
+
+  const url = `https://api.github.com/search/users?q=${query}&page=${page}`
+  // console.log(url)
+
+  useEffect(() => {
+    const getUser = async () => {
+
+      setIsPending(true)
+
+      try {
+        const res = await fetch(url)
+
+        if(!res.ok) {
+          throw new Error(res.statusText)
+        }
+
+        const data = await res.json()
+
+        setError(false)
+        setIsPending(false)
+        // setUsers([users, ...data.items])
+        setUsers(data.items)
+        setTotalPages(Math.round(data.total_count / 30))
+        
+      }
+      catch(err) {
+        setIsPending(false)
+        console.log(err.message)
+        setError(err.message)
+      }
+    }
+    getUser()
+  }, [page, url])
   
-  const url = `https://api.github.com/search/users?q=${query}&page=1`;
-  const { error, isPending, data } = useFetch(url)
+  // const url = `https://api.github.com/search/users?q=${query}&page=1`;
+  // const { error, isPending, data } = useFetch(url)
 
   return (
     <div>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {data && <Profile data={data} />}
+      {users && <Profile data={users} />}
     </div>
   )
 }
