@@ -56,7 +56,7 @@ export default function Search() {
     <div>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {users && <Profile data={users} />}
+      {users && <Profile data={users} totalPages={totalPages} page={page} setPage={setPage} isPending={isPending} />}
     </div>
   )
 }
