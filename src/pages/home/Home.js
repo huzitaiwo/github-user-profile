@@ -10,14 +10,15 @@ import './Home.css'
 
 export default function App() {
   // const { data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=1')
-  const [page, setPage] = useState(0)
-  const [totalPages, setTotalPages] = useState(0)
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   const [users, setUsers] = useState([])
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
 
   const url = `https://api.github.com/search/users?q=lagos&page=${page}`
+  console.log(url)
 
   useEffect(() => {
     const getUser = async () => {
@@ -35,7 +36,7 @@ export default function App() {
 
         setError(false)
         setIsPending(false)
-        // setUsers([...users, ...data.items])
+        // setUsers([users, data.items])
         setUsers(data.items)
         setTotalPages(Math.round(data.total_count / 30))
         
@@ -54,7 +55,6 @@ export default function App() {
     <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {console.log(url)}
       {users && <Profile data={users} />}
       {totalPages !== page && <button className="btn-load-more" onClick={() => setPage(page + 1)}>{isPending ? 'loading...' : 'Load More'}</button>}
     </div>
