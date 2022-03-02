@@ -12,7 +12,7 @@ export default function Profile({ data }) {
 
   return (
     <div className='container profile'>
-      {data.items.map(profile => (
+      {data.map(profile => (
         <div 
           key={profile.id} 
           className='card' 

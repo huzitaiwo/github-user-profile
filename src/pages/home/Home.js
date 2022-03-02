@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 // import { useFetch } from '../../hooks/useFetch'
 
 // components
-// import Profile from '../../components/Profile'
+import Profile from '../../components/Profile'
 
 // styles
 import './Home.css'
@@ -36,7 +36,7 @@ export default function App() {
 
         setError(false)
         setIsPending(false)
-        setUsers([...users, data.items])
+        setUsers([...users, ...data.items])
         setTotalPages(Math.round(data.total_count / 30))
         console.log(totalPages, users)
       }
@@ -54,7 +54,8 @@ export default function App() {
     <div className='container'>
       {error && <h2>{error}</h2>}
       {isPending && <h2>Loading...</h2>}
-      {users && <Profile users={users} />}
+      {console.log(users)}
+      {users && <Profile data={users} />}
     </div>
   );
 }
