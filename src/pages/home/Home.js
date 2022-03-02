@@ -17,6 +17,12 @@ export default function App() {
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
 
+  useEffect(() => {
+    const getUser = async () => {
+
+    }
+  }, [])
+
   
   return (
     <div className='container'>
