@@ -1,5 +1,4 @@
-import { useState, useEffect} from 'react';
-// import { useFetch } from '../../hooks/useFetch'
+import { useState, useEffect} from 'react'
 
 // components
 import Profile from '../../components/Profile'
