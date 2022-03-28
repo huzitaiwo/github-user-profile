@@ -8,7 +8,6 @@ import './Home.css'
 
 
 export default function App() {
-  // const { data, isPending, error } = useFetch('https://api.github.com/search/users?q=lagos&page=1')
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
 
