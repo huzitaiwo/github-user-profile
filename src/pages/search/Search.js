@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-// import { useFetch } from '../../hooks/useFetch'
 
 // styles
 import './Search.css'
@@ -52,9 +51,6 @@ export default function Search() {
     }
     getUser()
   }, [page, url])
-  
-  // const url = `https://api.github.com/search/users?q=${query}&page=1`;
-  // const { error, isPending, data } = useFetch(url)
 
   return (
     <div>
