@@ -12,16 +12,16 @@ export default function Profile({ data }) {
 
   return (
     <div className='container profile'>
-      {data.forEach(profile => (
+      {data.map(profile => (
         <div 
           key={profile.id} 
           className='card' 
           onMouseEnter={() => setHover(true)} 
           onMouseLeave={() => setHover(false)}
         >
-          {/* <img src={profile.avatar_url} alt="" /> */}
+          <img src={profile.avatar_url} alt="" />
           <p><span className='label'>username:</span> {profile.login}</p>
-          {hover && (
+          {(
           <>
             <p><span className='label'>score:</span> {profile.score}</p>
             <p><span className='label'>profile type:</span> {profile.type}</p>
