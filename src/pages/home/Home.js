@@ -16,7 +16,6 @@ export default function App() {
   const [error, setError] = useState(null)
 
   const url = `https://api.github.com/search/users?q=lagos&page=${page}`
-  console.log(url)
 
   useEffect(() => {
     const getUser = async () => {
@@ -34,8 +33,8 @@ export default function App() {
 
         setError(false)
         setIsPending(false)
-        // setUsers([users, ...data.items])
-        setUsers(data.items)
+        setUsers([...users, ...data.items])
+        // setUsers(data.items)
         setTotalPages(Math.round(data.total_count / 30))
         
       }
